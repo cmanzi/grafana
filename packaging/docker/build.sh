@@ -89,8 +89,6 @@ if [ $UBUNTU_BASE = "0" ]; then
   else
     docker_tag_all "${_docker_repo}" "master"
     docker tag "${_docker_repo}:${_grafana_version}" "grafana/grafana-dev:${_grafana_version}"
-    docker tag "${_docker_repo}:${_grafana_version}" "grafana/grafana-dev:explore-trace-ui-demo-${_grafana_version}"
-    docker push "grafana/grafana-dev:explore-trace-ui-demo-${_grafana_version}"
   fi
 else
   docker_build "ubuntu:18.10" "grafana-latest.linux-x64.tar.gz" "${_docker_repo}:${_grafana_version}-ubuntu" Dockerfile.ubuntu
@@ -103,7 +101,5 @@ else
   else
     docker tag "${_docker_repo}:${_grafana_version}-ubuntu" "${_docker_repo}:master-ubuntu"
     docker tag "${_docker_repo}:${_grafana_version}-ubuntu" "grafana/grafana-dev:${_grafana_version}-ubuntu"
-    docker tag "${_docker_repo}:${_grafana_version}-ubuntu" "grafana/grafana-dev:explore-trace-ui-demo-${_grafana_version}-ubuntu"
-    docker push "grafana/grafana-dev:explore-trace-ui-demo-${_grafana_version}-ubuntu"
   fi
 fi
